@@ -1,0 +1,15 @@
+.uler li{
+    padding: 7px;
+}
+.uler ul {
+    width: 400px;
+    list-style-type: none;
+    
+}
+.uler a{
+    text-decoration: none;
+}
+.uler a:hover{
+    font-size: 22px;
+    transition: linear 0.5  ;
+}
