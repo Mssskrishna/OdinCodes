@@ -1,5 +1,5 @@
-* {
-    margin: 30px;
+*{
+    margin: 15px;
     padding: 2px;
     margin-left: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -12,13 +12,13 @@ div {
 }
 
 h1 {
+    margin-top: 0;
     color: #2d46d1;
     font-size: 45px;
     text-decoration: underline;
 }
 
 .img img{
-    /* width: 750px; */
     width: 550px;
     height: 450px;
     margin: -1px;
