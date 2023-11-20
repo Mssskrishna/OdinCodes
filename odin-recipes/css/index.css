@@ -1,15 +1,44 @@
-.uler li{
-    padding: 10px;
+/* *{  width: 700px; */
+* {
+    max-width: 1000px;
+    box-sizing: border-box;
+    margin: 10px auto;
+}
+body{
+    background-color: #eed;
+}
+h1{
+    color: #333;
+    text-align: center;
+    font-size: 45px;
 }
 .uler ul {
-    width: 400px;
+    /* width: 400px; */
+    
     list-style-type: none;
-    font-size: 20px;
+    /* font-size: 20px; */
+    margin: 40px;
+    /* padding: 0; */
 }
-.uler a{
+
+.uler a {
     text-decoration: none;
+    color: #742424;
+    font-size: 30px;
+    transition: font-size ease 0.5;
 }
-.uler a:hover{
-    font-size: 22px;
-    transition: linear 0.5  ;
+.uler li{
+    margin: 40px;
+    background-color: #ccc;
+    border-radius: 40px;
+    /* padding: 0; */
+    border: 2px solid rgb(235, 34, 65, 0.34);
+}
+.uler a:hover {
+    font-size: 32px;
+}
+
+.uler {
+    /* max-width: 1000px; */
+    text-align: center;
 }
