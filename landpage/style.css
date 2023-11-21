@@ -1,0 +1,172 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.logo {
+    background-color: #1F2937;
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.header a,
+.text {
+    text-decoration: none;
+    color: #efe7eb;
+}
+
+.header {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    background-color: #1F2937;
+    flex-shrink: 1;
+    padding: 8px;
+}
+
+.links {
+
+    text-decoration: none;
+    display: flex;
+    gap: 8px;
+    font-size: 18px;
+    margin: 8px;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.page {
+    background-color: #1F2937;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    width: 450px;
+    height: 300px;
+    padding: 20px;
+
+}
+
+.text {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.head {
+    font-size: 48px;
+    font-weight: bolder;
+    color: #f9faf8;
+    /* padding: 20px; */
+}
+
+.section {
+    padding: 20px;
+    margin: 10px;
+    width: 500px;
+}
+
+.button {
+    background-color: #3882f6;
+    border-radius: 5px;
+    border: none #3882f6;
+    padding: 10px;
+    color: #e5e7eb;
+}
+
+.rowd {
+    display: flex;
+    gap: 10px;
+    margin: 40px;
+    justify-content: center;
+    flex-shrink: 1;
+}
+
+.card {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    /* align-content: flex-start; */
+    padding: 8px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 48px;
+    margin: 30px 20px 0 20px;
+}
+
+h5 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.images {
+
+    width: 300px;
+    height: 300px;
+
+    border: 5px solid #3882f6;
+
+    border-radius: 10px;
+}
+.quote{
+    display: flex;
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 200;
+    color: #1f2937;
+    /* width: 500px; */
+    height: 400px;
+    margin: 40px 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e7eb;
+    /* flex-direction: column; */
+}
+.quote h5{
+    align-self: flex-end;
+}
+
+footer {
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: #1F2937;
+    flex-shrink: 1;
+    font-size: 20px;
+    padding: 8px;
+    color: #f9faf8;
+    margin-top: 20px;
+}
+
+.last{
+    display: flex;
+    justify-content: space-around;
+    background-color: #3882f6;
+    /* width: 500px; */
+    height: 78px;
+    width: 50%;
+    gap: 20px;
+    align-items: center;
+    margin: auto;
+    border-radius: 20px;
+}
+.last button{
+    border : 2px solid #f9faf8;
+    font-size: 18px;
+    margin: 10px;
+    padding: 5px    ;
+}
+
+.cont .text{
+    margin: 0;
+}
