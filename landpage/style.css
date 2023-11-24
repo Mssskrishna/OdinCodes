@@ -2,11 +2,13 @@ body {
     box-sizing: border-box;
     margin: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo {
     background-color: #1F2937;
-    width: 250px;
+    /* width: 250px; */
     flex-shrink: 0;
 }
 
@@ -44,13 +46,14 @@ body {
     gap: 25px;
     align-items: center;
     justify-content: center;
+
+    flex-shrink: 1;
 }
 
 .img {
     width: 450px;
     height: 300px;
     padding: 20px;
-
 }
 
 .text {
@@ -83,6 +86,8 @@ body {
     display: flex;
     gap: 10px;
     margin: 40px;
+
+    flex-flow: row wrap;
     justify-content: center;
     flex-shrink: 1;
 }
@@ -90,11 +95,11 @@ body {
 .card {
     width: 300px;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: nowrap; */
     flex-direction: column;
     align-items: center;
     /* align-content: flex-start; */
-    padding: 8px;
+    padding: 10px;
 }
 
 h1 {
@@ -119,7 +124,7 @@ h5 {
 }
 .quote{
     display: flex;
-    font-size: 36px;
+    font-size: 30px;
     font-style: italic;
     font-weight: 200;
     color: #1f2937;
@@ -130,6 +135,8 @@ h5 {
     align-items: center;
     background-color: #e5e7eb;
     /* flex-direction: column; */
+    /* flex-wrap: nowrap; */
+    flex-flow: wrap row;
 }
 .quote h5{
     align-self: flex-end;
@@ -153,20 +160,23 @@ footer {
     justify-content: space-around;
     background-color: #3882f6;
     /* width: 500px; */
-    height: 78px;
+    height: 3.4*width;
     width: 50%;
     gap: 20px;
     align-items: center;
     margin: auto;
     border-radius: 20px;
+    flex-shrink: 1;
 }
 .last button{
     border : 2px solid #f9faf8;
     font-size: 18px;
     margin: 10px;
     padding: 5px    ;
+    flex-shrink: 0;
 }
 
-.cont .text{
-    margin: 0;
+.cont .text,.notext{
+    margin: 2px;
+    padding: 4px;
 }
