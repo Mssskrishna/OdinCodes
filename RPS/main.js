@@ -72,7 +72,7 @@ function winnerCheck(playerSelection, computerSelection) {
 let playerSelection;
 let computerSelection;
 while (playerCount <= 5 || computerCount <= 5) {
-    playerSelection = prompt("enter your choice").toLowerCase();
+    // playerSelection = prompt("enter your choice").toLowerCase();
     computerSelection = getComputerChoice();
 
     winnerCheck(playerSelection, computerSelection);
