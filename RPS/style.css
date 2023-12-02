@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    background-color: #234;
+    color: #efd;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.main {
+    flex: 1;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 50px;
+    text-align: center;
+    background-color: #ccc;
+    min-height: 130px;
+    color: #453;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonclass,
+.clicked {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 20px;
+}
+
+p {
+    text-align: center;
+    font-size: 25px;
+}
+
+.button,
+.player,
+.computer {
+    width: 200px;
+    height: 200px;
+    font-size: 100px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: 2px black,green; */
+}
+
+
+.buttonclass {
+    margin: 20px;
+}
+
+.winning {
+    text-align: center;
+    font-size: 30px;
+    margin: 10px;
+    border: 2px dotted;
+    width: 50%;
+    border-top: 0;
+    transition: 0.5s ease;
+}
+
+.end {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.endbutton {
+    background-color: #032;
+    border-radius: 10px;
+    scale: 1.5;
+    margin: 10px;
+    padding: 4px;
+}
+
+footer {
+    /* align-items: flex-end; */
+    background-color: #ccc;
+    flex-shrink: 0;
+    /* display: flex; */
+}
+
+h2 {
+    text-align: center;
+    opacity: 0.75;
+}
+
+.winning-ultimate {
+    font-size: 35px;
+    /* Other styles as needed */
+}
