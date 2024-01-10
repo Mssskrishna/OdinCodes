@@ -54,7 +54,7 @@ function adddivs(inte) {
     for (let i = 0; i < inte; i++) {
         const smalldiv = document.createElement("button");
         smalldiv.style.cssText = "width: " + width + "px;height:" + height + ";border:1px solid #ccc;"
-        smalldiv.addEventListener("click", () => {
+        smalldiv.addEventListener("mouseover", () => {
             if (colourpos === 0) {
                 smalldiv.style.cssText = "background: " + createcolour() + ";width: " + width + "px;border:1px solid #cdc";
             } else {
