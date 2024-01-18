@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function validatepassword() {
+            let password = document.querySelector('#password').value;
+            let confirm = document.querySelector('#confirm').value;
+            let passwordInput = document.querySelector("#password");
+            let confirmInput = document.querySelector("#confirm");
+
+            if (password === confirm) {
+                confirmInput.style.cssText = "border: 2px solid green";
+            } else {
+                confirmInput.style.cssText = "border: 2px solid red";
+            }
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="imagecontainer">
+            <div class="logo">
+                <img class="odin" src="img/odin-lined.png" alt="" srcset="">
+                <p>ODIN</p>
+            </div>
+        </div>
+        <div class="formcontainer">
+            <div class="paracontainer">
+                <p>THIS IS NOT A REAL ONLINE SERVICE! You know you need something like this in your life to help you
+                    realize your deepest dreams.Signup to get started
+                </p>
+                <p>You know you want to</p>
+            </div>
+            <h2>Let's do this!</h2>
+
+            <form action="" method="get">
+
+                <div class="forms">
+                    <div class="first">
+                        <label for="first_name">FIRST NAME</label>
+                        <input type="text">
+                    </div>
+                    <div class="first">
+                        <label for="last_name">LAST NAME</label>
+                        <input type="text">
+                    </div>
+                    <div class="first">
+                        <label for="email">EMAIL</label>
+                        <input type="email" name="email" id="email">
+                    </div>
+
+                    <div class="first">
+                        <label for="phone_number">PHONE NUMBER</label>
+                        <input type="number" name="number" id="number">
+                    </div>
+
+                    <div class="first">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" name="password" id="password" oninput="validatepassword()">
+                    </div>
+
+                    <div class="first">
+
+                        <label for="confirm">CONFIRM PASSWORD</label>
+                        <input type="password" name="confirm" id="confirm" oninput="validatepassword()">
+                    </div>
+
+                </div>
+            </form>
+            <div class="create">
+                <button type="submit">Create Account</button>
+                <p>Already have an account</p><a href="#">login</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
