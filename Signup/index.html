@@ -45,11 +45,11 @@
                 <div class="forms">
                     <div class="first">
                         <label for="first_name">FIRST NAME</label>
-                        <input type="text">
+                        <input type="text" pattern="[a-zA-Z0-9]+">
                     </div>
                     <div class="first">
                         <label for="last_name">LAST NAME</label>
-                        <input type="text">
+                        <input type="text" pattern="[a-zA-Z0-9]+">
                     </div>
                     <div class="first">
                         <label for="email">EMAIL</label>
@@ -58,28 +58,29 @@
 
                     <div class="first">
                         <label for="phone_number">PHONE NUMBER</label>
-                        <input type="number" name="number" id="number">
+                        <input type="number" name="number" id="number" min="1111111111" max="9999999999" value="0">
                     </div>
 
                     <div class="first">
                         <label for="password">PASSWORD</label>
-                        <input type="password" name="password" id="password" oninput="validatepassword()">
+                        <input type="password" name="password" id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                     </div>
 
                     <div class="first">
 
                         <label for="confirm">CONFIRM PASSWORD</label>
-                        <input type="password" name="confirm" id="confirm" oninput="validatepassword()">
+                        <input type="password" name="confirm" id="confirm">
                     </div>
 
                 </div>
             </form>
             <div class="create">
                 <button type="submit">Create Account</button>
-                <p>Already have an account</p><a href="#">login</a>
+                <p>Already have an account   <a href="#">login</a></p>
             </div>
         </div>
     </div>
+    <script src="min.js"></script>
 </body>
 
 </html>
