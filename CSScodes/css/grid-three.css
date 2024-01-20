@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: grid;
+    gap: 4px;
+    grid-template:1fr 4fr;
+    grid-template-areas: 
+    "header header"
+    "sidebar nav"
+    "sidebar articles"
+    "footer footer";
+    text-align: center;
+
+
+}
+.container div{
+    padding: 15px;
+    font-size: 32px;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+.header{
+    display: grid;
+    grid-template-areas: 
+    "head menu";
+    grid-template-columns: 1fr 2fr;
+    grid-area: header;
+    background-color: #001;
+    color: #fff;
+}
+.head{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+.header h2{
+    font-size: 36px;
+    justify-self: start;
+}
+.menu {
+    align-self: center;
+}
+.menu ul{
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr;
+    grid-template-areas:"minul minul minul minul";
+    grid-area: menu;
+
+    font-size: 16px;
+
+}
+.minul{
+    list-style-type: none;
+    align-content: center;
+    justify-content: center;
+}
+.sidebar{
+    display: grid;
+    grid-area: sidebar;
+    background-color: #c94114;
+    
+}
+
+.sidebar{
+    display: grid;
+    list-style-type:none ;
+    gap: 50px;
+    
+}
+.sidebar .img{
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    font-weight: normal;
+    border-radius: 10px;
+}
+.sidebar .minside{
+
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
+}
+.minside,.img{
+
+    display: grid;
+    align-items: center;
+}
+.nav{
+    grid-area: nav;
+    background-color: #c94114;
+    color: white;
+
+}
+
+.nav ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "minnav minnav minnav";
+    font-size: 16px;
+    text-transform: uppercase;
+    list-style-type: none;
+}
+.articles{
+    grid-area: articles;
+    background-color:#bccbde;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 15px;
+    text-align: center;
+}
+.article p{
+    font-size: 14px;
+    font-family: sans-serif;
+    /* color: white; */
+    text-align: left;
+    padding: 5px;
+}
+.article h2{
+    font-size: 18px;
+    text-align: center;
+}
+.article{
+    height: 200px;
+    background-color: white;
+    /* padding: 10px; */
+}
+.footer{
+    grid-area: footer;
+    background-color: #001;
+    color: #fff;
+    text-align: center;
+
+}
+
+.footer h2{
+    font-size: 13px;
+    font-weight: normal;
+}
+.img{
+    border-radius:20px ;
+}
