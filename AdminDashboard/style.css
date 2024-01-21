@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container div{
+    padding:15px;
+
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1.5fr 5fr;
+    grid-template-areas: "sidebar header" "sidebar article";
+}
+.header{
+    background-color: #cdc;
+    grid-area: header;
+
+}
+.sidebar{
+    background-color:  #29a7e2;
+    grid-area: sidebar;
+    color: #fff;
+}
+.article{
+    background-color: #CCC;
+    grid-area: article;
+}
+.sidemenu ul,.downmenu ul{
+    list-style-type: none;
+    display: grid;
+    gap: 15px;
+}
+.mainmenu div{
+    padding-top: 0px;
+}
+.mainmenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+}
+.mm{
+    display: flex;
+    gap: 15px;
+}
+.search{
+    background-color: #CCC;
+    width: 40vw;
+    border-radius: 20px;
+    height: 1.5vh;
+}
+.usermenu{
+    display: flex;
+    justify-content: space-between;
+}
+.user{
+    display: flex;
+    gap: 20px;
+}
+.user div{
+    padding: 0;
+}
+.create{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+.create button{
+    background-color: #3499c8;
+    padding: 15px;
+    border-radius: 25px;
+    width: 7vw;
+    color: #FFF;
+    font-size: 20px;
+    /* gap: 15px; */
+}
+.article{
+    display: grid;
+    grid-template-areas:"project announcements" "project trending";
+    grid-template-columns:2fr 1fr;
+}
+.project{
+    grid-area:project;
+    padding :0;
+
+}
+.project_card{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    gap: 10px;
+}
+.trending{
+    grid-area: trending;
+}
+.announcements{
+    grid-area:announcements;
+}
+.card{
+    background-color: white;
+    border-left: 10px solid yellow;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
+.card>.title{
+    text-align: left;
+    font-weight: bold;
+}
+.buttons ul{
+    list-style-type:none ;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.announce{
+    background-color: #fff;
+    border-radius: 10px;
+    align-items: center;
+}
+.trend_block{
+    background-color: #FFF;
+    border-radius: 10px;
+}
+.trending ul{
+    list-style-type:none ;
+}
