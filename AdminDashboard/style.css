@@ -2,14 +2,16 @@
     margin: 0;
     padding: 0;
 }
+@import url('http://fonts.googleapis.com/css?family=Roboto');
 .container div{
     padding:15px;
+    font-family: 'Roboto',sans-serif;
 
 }
 .container{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1.5fr 5fr;
+    grid-template-rows: 0.5fr 2fr;
     grid-template-areas: "sidebar header" "sidebar article";
 }
 .header{
@@ -40,9 +42,14 @@
     align-items: flex-start;
     
 }
-.mm{
+.menuin{
     display: flex;
     gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.menuin p{
+    font-weight: bold;
 }
 .search{
     background-color: #CCC;
@@ -53,6 +60,12 @@
 .usermenu{
     display: flex;
     justify-content: space-between;
+}
+.usermenu div{
+    padding-top:0 ;
+}
+.downmenu{
+    padding-top: 10px;
 }
 .user{
     display: flex;
@@ -112,13 +125,25 @@
 .buttons ul{
     list-style-type:none ;
     display: flex;
-    gap: 10px;
+    gap: 20px;
     justify-content: flex-end;
+    align-items: center;
 }
 .announce{
     background-color: #fff;
     border-radius: 10px;
-    align-items: center;
+    align-items: center;;
+}
+.acards,.username{
+
+    border-bottom: 2px solid rgb(0,0,0,0.56);
+}
+.announce .atitle{
+    font-weight: bold;
+    font-size:14px;
+}
+.announce p{
+    font-size: 13px;
 }
 .trend_block{
     background-color: #FFF;
@@ -126,4 +151,62 @@
 }
 .trending ul{
     list-style-type:none ;
+}
+.mainlogo{
+    width: 75px;
+    height: 75px;
+    background-color: #FFF;
+}
+.logo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+.side{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+.side img,.menuin img,.buttonimg img{
+    width: 30px;
+    height: 30px;
+    opacity: 0.75;
+}
+.img{
+    background-color:rgb(256,256,256,0.79);
+    border-radius: 10px;
+    color: black;
+    width: 10vw;
+}
+.menuin>.userlogo{
+    width:40px; 
+    height:40px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.user>.userlogo{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(256,256,256,0.56);
+    border-radius: 50%;
+}
+.username{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 5px;
+}
+.trending .username{
+    padding: 5px;
+}
+.username img{
+    width: 35px;
+    height: 35px;
+    background-color: #82b5cd;
+    border-radius: 50%;
 }
