@@ -48,17 +48,12 @@ form_container.addEventListener("submit", (e) => {
 });
 
 const body = document.querySelector('.body');
-const readButton = document.createElement('button');
-readButton.innerText = "Read";
-const deleteButton = document.createElement('button');
-deleteButton.innerText = "Delete";
-
 function displaybook() {
     body.innerHTML = "";
 
     library.forEach(book => {
         const card = document.createElement('div');
-        card.className = 'book-card'; 
+        card.className = 'book-card';
 
         const titleElement = document.createElement('h2');
         titleElement.innerText = book.title;
@@ -72,32 +67,49 @@ function displaybook() {
         pagesElement.innerText = `Pages: ${book.pages}`;
         card.appendChild(pagesElement);
 
-        const readElement = document.createElement('p');
-        readElement.innerText = `Read: ${book.read}`;
-        card.appendChild(readElement);
+        const readButton = document.createElement('button');
+        readButton.className = 'read';
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = "delete";
+        deleteButton.className = "delete";
 
-        const readButtonClone = readButton.cloneNode(true);
-        readButtonClone.addEventListener('click', () => toggleReadStatus(book));
-        card.appendChild(readButtonClone);
+        readButton.addEventListener('click', () => toggleReadStatus(book,readButton));
+        if (book.read == 'read') {
+            readButton.innerText = 'read';
+            readButton.style.cssText = 'background-color:green;color:white;font-size:15px';
+        } else {
 
-        const deleteButtonClone = deleteButton.cloneNode(true);
-        deleteButtonClone.addEventListener('click', () => removeBook(book, card)); 
-        card.appendChild(deleteButtonClone);
+            readButton.innerText = 'not read';
+            readButton.style.cssText = 'background-color:red;color:white;font-size:15px';
+        }
+
+        deleteButton.addEventListener('click', () => removeBook(book, card));
+        card.appendChild(readButton);
+
+        card.appendChild(deleteButton);
+
 
         body.appendChild(card);
     });
 }
-
-function toggleReadStatus(book) {
-    book.read = book.read === 'read' ? 'not read' : 'read';
+function toggleReadStatus(book,readButton) {
+    if (book.read === 'read') {
+        book.read = 'not read';
+        readButton.innerText = 'not read';
+        readButton.style.cssText = 'background-color:red;color:white';
+    } else {
+        book.read = 'read'
+        readButton.innerText = 'read';
+        readButton.style.cssText = 'background-color:green;color:white';
+    }
     displaybook();
 }
 
 function removeBook(book, card) {
-    const index = library.indexOf(book);
+    const index = library.indexOf(book)
     if (index !== -1) {
         library.splice(index, 1);
-        body.removeChild(card);
+        body.removeChild(card)
     }
 }
 
