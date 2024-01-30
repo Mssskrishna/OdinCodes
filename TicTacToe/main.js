@@ -65,8 +65,11 @@ const Game = () => {
         } else
             switchActive()
     }
+    const setActiveplayer = () => {
+        activePlayer = playerone;
+    }
     return {
-        getActiveplayer, board, updateMove
+        getActiveplayer, board, updateMove, setActiveplayer
     }
 }
 
@@ -117,6 +120,7 @@ const handleUserInput = () => {
     });
     replay.addEventListener('click', () => {
         setActive.board.resetBoard();
+        setActive.setActiveplayer();
         buttons.forEach((button) => {
             button.textContent = '';
             button.disabled = false;
