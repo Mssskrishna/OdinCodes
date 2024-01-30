@@ -1,98 +1,128 @@
 
-let tictactoe = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
-let choice = 0;
+const Gameboard = () => {
+    const tictactoe = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
 
-function win(check) {
-    if (tictactoe[0] === check && tictactoe[1] === check && tictactoe[2] === check ||
-        tictactoe[3] === check && tictactoe[4] === check && tictactoe[5] === check ||
-        tictactoe[6] === check && tictactoe[7] === check && tictactoe[8] === check ||
-        tictactoe[0] === check && tictactoe[3] === check && tictactoe[6] === check ||
-        tictactoe[1] === check && tictactoe[4] === check && tictactoe[7] === check ||
-        tictactoe[2] === check && tictactoe[5] === check && tictactoe[8] === check ||
-        tictactoe[0] === check && tictactoe[4] === check && tictactoe[8] === check ||
-        tictactoe[2] === check && tictactoe[4] === check && tictactoe[6] === check
-    ) {
+    const isempty = (index) => tictactoe[index] === '-';
+
+    const fillCell = (index, choice) => {
+        tictactoe[index] = choice
+    }
+    const getBoard = () => tictactoe;
+    const resetBoard = () => {
+        for (let i = 0; i < 9; i++) {
+            tictactoe[i] = '-'
+        }
+    }
+
+    const checkwin = (check) => {
+        if (tictactoe[0] === check && tictactoe[1] === check && tictactoe[2] === check ||
+            tictactoe[3] === check && tictactoe[4] === check && tictactoe[5] === check ||
+            tictactoe[6] === check && tictactoe[7] === check && tictactoe[8] === check ||
+            tictactoe[0] === check && tictactoe[3] === check && tictactoe[6] === check ||
+            tictactoe[1] === check && tictactoe[4] === check && tictactoe[7] === check ||
+            tictactoe[2] === check && tictactoe[5] === check && tictactoe[8] === check ||
+            tictactoe[0] === check && tictactoe[4] === check && tictactoe[8] === check ||
+            tictactoe[2] === check && tictactoe[4] === check && tictactoe[6] === check
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return { isempty, fillCell, resetBoard, checkwin, getBoard }
+}
+
+const Player = (name, value) => {
+    return { name, value };
+}
+
+const Game = () => {
+    const board = Gameboard();
+    const playerone = Player('playerone', 'X');
+    const playertwo = Player('playertwo', 'O');
+    const manipulate = DomManipulation(board)
+    let activePlayer = playerone;
+
+    const getActiveplayer = () => activePlayer;
+
+    const switchActive = () => {
+        activePlayer = (activePlayer === playerone) ? playertwo : playerone;
+    }
+    const checkDraw = () => {
+        for (let i = 0; i < 9; i++) {
+            if (board.isempty(i)) {
+                return false;
+            }
+        }
         return true;
     }
-}
-
-const userinput = document.querySelector('#uservalue');
-const submitbutton = document.querySelector("button[type='submit']")
-function print() {
-    console.log(`${tictactoe[0]}  ${tictactoe[1]} ${tictactoe[2]}\n ${tictactoe[3]} ${tictactoe[4]} ${tictactoe[5]}\n ${tictactoe[6]} ${tictactoe[7]} ${tictactoe[8]}`)
-}
-function randomchoice() {
-    let number = Math.round(Math.random() * 8);
-    // console.log(number);
-    while (tictactoe[number] !== '-') {
-        number = Math.round(Math.random() * 8);
+    const updateMove = (index) => {
+        board.fillCell(index, getActiveplayer().value)
+        if (board.checkwin(getActiveplayer().value)) {
+            manipulate.displayWinner(`${getActiveplayer().name} wins`)
+        } else if (checkDraw()) {
+            manipulate.displayWinner('draw');
+        } else
+            switchActive()
     }
-    console.log(number)
-    return number;
-}
-const formcontainer = document.querySelector(".inputbutton")
-formcontainer.addEventListener('submit', (e) => {
-    let userchoice;
-    let computerchoice;
-
-    e.preventDefault();
-    userchoice = userinput.value;
-    if (userchoice === 'X') computerchoice = 'O'
-    else computerchoice = 'X'
-    buttonfill(userchoice, computerchoice)
-    submitbutton.disabled = true;
-})
-
-const displayblock = document.querySelector('.block');
-const winner = document.querySelector('.winnerchoice')
-function fillbutton(computerchoice, buttons) {
-    const number = randomchoice();
-    buttons[number].textContent = computerchoice;
-    buttons[number].disabled = true;
-
-    tictactoe[number] = computerchoice;
-    // userchance = true;
-    if (win(computerchoice)) {
-        displayblock.style.cssText = "display:block";
-        winner.textContent = 'computer wins';
+    return {
+        getActiveplayer, board, updateMove
     }
-    print();
-    choice++;
-    // return userchance;
 }
-function block() {
-    buttons.forEach((button) => {
-        button.disabled = true;
-    })
-}
-const buttons = document.querySelectorAll('.button');
-function buttonfill(userchoice, computerchoice) {
 
-    console.log(buttons)
+const DomManipulation = (gameboard) => {
+    const winner = document.querySelector('.winnerchoice')
+    const winnerblock = document.querySelector('.block')
+
+    const buttons = document.querySelectorAll('.button')
+    const head = document.querySelector('h2')
+    // const game = Game()
+    const game = Gameboard()
+    const displayWinner = (message) => {
+        winner.textContent = message;
+        winnerblock.style.cssText = 'display:flex';
+        blockAll(true)
+    }
+    const blockAll = (choice) => {
+        buttons.forEach((button) => {
+            button.disabled = choice;
+            if (choice === false) {
+                button.textContent = ''
+            }
+        })
+    }
+    const updatehead = (name) => {
+        head.textContent = name
+    }
+
+    return { displayWinner, updatehead, blockAll };
+}
+
+const handleUserInput = () => {
+    const buttons = document.querySelectorAll('.button')
+    const setActive = Game();
+    const manipulate = DomManipulation(setActive)
+    const head = document.querySelector('h2')
+    const replay = document.querySelector('.replay')
+    manipulate.updatehead(setActive.getActiveplayer().name)
+
     buttons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            choice++;
-            button.textContent = userchoice;
-            tictactoe[index] = userchoice;
-            print()
-            button.disabled = true;
-            if (win(userchoice)) {
-                displayblock.style.cssText = 'display:block';
-                winner.textContent = 'user wins';
-                block();
-            } else if (choice < 8)
-                fillbutton(computerchoice, buttons);
-        })
-    })
+            button.textContent = setActive.getActiveplayer().value;
+            setActive.updateMove(index);
 
+            manipulate.updatehead(setActive.getActiveplayer().name)
+            button.disabled = true;
+        })
+    });
+    replay.addEventListener('click', () => {
+        setActive.board.resetBoard();
+        buttons.forEach((button) => {
+            button.textContent = '';
+            button.disabled = false;
+        });
+        manipulate.displayWinner('');
+        manipulate.blockAll(false);
+    });
 }
-const restart = document.querySelector('.restart')
-restart.addEventListener('click', () => {
-    buttons.forEach((button) => {
-        button.textContent = "";
-        button.disabled = false;
-        tictactoe = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
-        choice = 0
-        displayblock.style.cssText = "display:none"
-    })
-})
+handleUserInput();
