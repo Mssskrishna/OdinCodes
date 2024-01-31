@@ -1,10 +1,12 @@
 const library = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 const formdiv = document.querySelector('.forms');
@@ -17,14 +19,16 @@ button.addEventListener('click', () => {
     button.style.cssText = "display:none";
 });
 
+
 const input = document.querySelector("input");
 
-const title = document.querySelector("#title");
-const author = document.querySelector("#author");
-const pages = document.querySelector("#pages");
-const read = document.querySelector("#read");
-
 function addBooktoLibrary() {
+    const title = document.querySelector("#title");
+    const author = document.querySelector("#author");
+    const pages = document.querySelector("#pages");
+    const read = document.querySelector("#read");
+
+
     if (read.checked) {
         const abook = new Book(title.value, author.value, pages.value, "read");
         library.push(abook);
@@ -73,12 +77,11 @@ function displaybook() {
         deleteButton.innerText = "delete";
         deleteButton.className = "delete";
 
-        readButton.addEventListener('click', () => toggleReadStatus(book,readButton));
+        readButton.addEventListener('click', () => toggleReadStatus(book, readButton));
         if (book.read == 'read') {
             readButton.innerText = 'read';
             readButton.style.cssText = 'background-color:green;color:white;font-size:15px';
         } else {
-
             readButton.innerText = 'not read';
             readButton.style.cssText = 'background-color:red;color:white;font-size:15px';
         }
@@ -92,7 +95,7 @@ function displaybook() {
         body.appendChild(card);
     });
 }
-function toggleReadStatus(book,readButton) {
+function toggleReadStatus(book, readButton) {
     if (book.read === 'read') {
         book.read = 'not read';
         readButton.innerText = 'not read';
