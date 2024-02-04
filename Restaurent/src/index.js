@@ -2,6 +2,7 @@ import { addcontainer } from "./menu"
 import { aboutblock } from "./about"
 import { homeblock } from "./home"
 
+homeblock()
 const menu = document.querySelector('.menu')
 const about = document.querySelector('.about')
 const home = document.querySelector('.home')
