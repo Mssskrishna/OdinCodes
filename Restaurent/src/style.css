@@ -1,11 +1,14 @@
 body{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 /* .content {
     display: flex;
     justify-content: center;
 } */
+
 
 .container {
     display: grid;
@@ -24,9 +27,6 @@ body{
     width: 35.5vw;
     height: 40vh;
     border-radius: 10px
-}
-.container div{
-    padding: 10px;
 }
 .aboutcon{
     width: 50%;
@@ -49,4 +49,32 @@ body{
     background-position: center;
     background-size: cover;
 
+}
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: antiquewhite;
+    gap: 10px;
+}
+.navbar button{
+    background-color: #ccc;
+    color: green;
+    padding: 10px;
+    font-size: 20px;
+    /* opacity: 0.5; */
+    border: 0;
+}
+.active{
+    /* opacity: 1; */
+    opacity: 0.5;
+    background-color: #c76464;
+    border-bottom: 2px solid #23e130;
+}
+button:disabled{
+    opacity: 1;
+    /* opacity: 0.5; */
+    /* background-color: #c76464; */
+    border-bottom: 5px solid rgb(212, 19, 19);
 }

@@ -1,12 +1,14 @@
 const container = document.querySelector('#content')
 
-const homeblock = ()=>{
-    
+const homeblock = () => {
+    container.innerHTML = ''
     const cont = document.createElement('div')
     cont.classList.add('homecon')
-
-    cont.textContent = "hello"
+    const title = document.createElement('h1')
+    title.textContent = 'Welcome, Brainers'
+    title.style.cssText = "padding : 10px"
+    cont.appendChild(title)
     container.appendChild(cont)
 }
 
-export {homeblock}
+export { homeblock }

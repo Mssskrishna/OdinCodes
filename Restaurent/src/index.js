@@ -9,8 +9,11 @@ const navelements = document.querySelectorAll(".nav");
 const buttondisable = (item) => {
     navelements.forEach(element => {
         element.disabled = false;
+        element.classList.remove('active')
     })
     item.disabled = true
+
+    element.classList.add('active')
 }
 
 menu.addEventListener('click', () => {
