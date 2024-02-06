@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            /* width: 50vw; */
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            text-align: center;
+            width: 50vw;
+            height: 70vh;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            /* width: 5px; */
+        }
+
+        button {
+            border-radius: 50%;
+            height: 2vh;
+        }
+
+
+        button {
+            background-color: white;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="images">
+            <img src="flowers-276014_1280.jpg" alt="Image 1" loading="lazy">
+            <img src="woman-837156_1280.jpg" alt="Image 2" loading="lazy" style="display: none;">
+            <img src="woman-1509956_1280.jpg" alt="Image 3" loading="lazy" style="display: none;">
+        </div>
+        <div class="buttons">
+            <button></button><button></button><button></button>
+        </div>
+    </div>
+    <script src="slider.js"></script>
+
+</body>
+
+</html>

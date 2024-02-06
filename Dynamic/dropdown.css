@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: block;
+    grid-template-columns: 1fr 4fr;
+    height: 100vh;
+}
+
+
+
+.menubar {
+    display: none;
+    width: 10vw;
+    flex-direction: column;
+    gap: 10px
+}
+
+div {
+    padding: 10px;
+    letter-spacing: 1px;
+}
+
+h1,
+h2,
+p {
+    color: #333;
+}
+
+button {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.active {
+    background-color: #ccc;
+}
