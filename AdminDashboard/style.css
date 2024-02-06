@@ -15,12 +15,12 @@
     grid-template-areas: "sidebar header" "sidebar article";
 }
 .header{
-    background-color: #cdc;
+    background-color: #cee;
     grid-area: header;
 
 }
 .sidebar{
-    background-color:  #29a7e2;
+    background-color:  #38bdf8;
     grid-area: sidebar;
     color: #fff;
 }
@@ -52,7 +52,7 @@
     font-weight: bold;
 }
 .search{
-    background-color: #CCC;
+    background-color: #ccc;
     width: 40vw;
     border-radius: 20px;
     height: 1.5vh;
@@ -80,7 +80,7 @@
     gap: 10px;
 }
 .create button{
-    background-color: #3499c8;
+    background-color: #38bdf8;
     padding: 15px;
     border-radius: 25px;
     width: 7vw;
@@ -180,12 +180,12 @@
     background-color:rgb(256,256,256,0.79);
     border-radius: 10px;
     color: black;
-    width: 10vw;
+    /* width: 10vw; */
 }
 .menuin>.userlogo{
     width:40px; 
     height:40px;
-    background-color: #fff;
+    background-color: #a3e635;
     border-radius: 50%;
 }
 .user>.userlogo{
