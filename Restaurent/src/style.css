@@ -26,19 +26,21 @@ body{
 .img{
     width: 35.5vw;
     height: 40vh;
-    border-radius: 10px
+    border-radius: 10px;
+    padding: 20px;
 }
 .aboutcon{
     width: 50%;
     /* display: flex; */
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     margin: 20px auto;
 }
 .content h2{
     font-size: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+    padding: 20px;
 }
 .homecon{
     background: url('pexels-life-of-pix-67468.jpg');
