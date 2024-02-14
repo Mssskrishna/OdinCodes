@@ -33,7 +33,7 @@ img {
     justify-content: center;
 }
 
-.left{
+.left {
     background-color: rgb(0, 0, 0, 0.5);
     width: 30vw;
     margin: 30px;
@@ -61,9 +61,11 @@ img {
 .temperature {
     font-size: 40px;
 }
-.weight{
+
+.weight {
     font-size: 25px;
 }
+
 .searchbar {
     display: flex;
     background-color: rgb(0, 0, 0, 0);
@@ -76,27 +78,29 @@ img {
     justify-content: center;
 }
 
-#temperature{
+#temperature {
     padding: 10px;
     background-color: black;
     color: white;
     background: none;
-    border: 1px solid rgb(256,256,256,0.5);
-    border-radius:10px ;
+    border: 1px solid rgb(256, 256, 256, 0.5);
+    border-radius: 10px;
     width: 5vw;
 }
-.circle{
+
+.circle {
     width: 1vw;
     height: 1vh;
     background: url('img/bg.jpg');
-    background-size:cover ;
+    background-size: cover;
     border-radius: 50%;
-    border: 1px solid rgb(256,256,256,0.5);
+    border: 1px solid rgb(256, 256, 256, 0.5);
     margin: 10px;
 }
+
 .search,
 input {
-    background :transparent;
+    background: transparent;
     border: none;
 
     font-size: 20px;
@@ -119,18 +123,43 @@ input:focus-within {
     background-color: none;
     background: transparent;
 }
-.additional{
+
+.additional {
     margin: 30px;
     background-color: rgb(0, 0, 0, 0.5);
 }
 
-.card{
+.card {
     display: flex;
     gap: 20px;
     align-items: center;
     justify-content: space-between;
     border-bottom: 5px solid rgb(0, 256, 256, 0.5);
 }
-.card:last-child{
+
+.card:last-child {
     border-bottom: none;
+}
+
+.loader {
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 2px solid #3498db;
+    width: 30px;
+    height: 30px;
+    /* -webkit-animation: spin 2s linear infinite   ; */
+    /* Safari */
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
