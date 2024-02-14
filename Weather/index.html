@@ -5,17 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="background-image: url(img/bg.jpg);background-size: cover;">
-    <label for="cityname">City name: <input type="text" id="cityname"></label>
-    <br>
-    <button type="submit" class="button">submit</button>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="circle"></div>
+            <div class="side">
+                <p class="input">Clean Sky</p>
+                <p class="date">12 Feb 2024</p>
+                <p class="city">London</p>
+                <p class="temperature">60F</p>
+                <img src="img/weather/64x64/day/116.png" alt="image" srcset="" class="image">
+                <br>
+                <br>
+                <button id="temperature">Fahrenheit</button>
+            </div>
 
-    <div class="display">
+        </div>
+        <div class="searchbar">
+            <input placeholder="cityname" type="text" id="cityname">
+
+            <button type="submit" class="search"><img src="img/search-icon.png" srcset=""></button>
+        </div>
+
+        <div class="additional">
+            <div class="card">
+                <img src="img/SVG/thermo.svg" alt="">
+                <div class="content">
+                    <p>Feelslike</p>
+                    <p class="feelslike weight">2.5C</p>
+                </div>
+            </div>
+            <div class="card">
+
+                <img src="img/SVG/humidity.svg" alt="">
+                <div class="content">
+                    <p>Humidity</p>
+                    <p class="humidity weight">2.5%</p>
+                </div>
+            </div>
+            <div class="card">
+
+                <img src="img/SVG/rainy.svg" alt="">
+                <div class="content">
+                    <p>Chance of Rain</p>
+                    <p class="rain weight">5%</p>
+                </div>
+            </div>
+            <div class="card">
+
+                <img src="img/SVG/wind.svg" alt="">
+                <div class="content">
+                    <p>Wind Speed</p>
+                    <p class="wind weight">100km/h</p>
+                </div>
+            </div>
+        </div>
 
     </div>
-    <button id="temperature">C</button>
     <script src="dom.js" type="module"></script>
 </body>
 
