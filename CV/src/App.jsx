@@ -1,160 +1,56 @@
 import { useState } from "react";
-
-function Form({ labels, handleSubmit, onInputChange, formState, edit }) {
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log(`Received ${name} with value ${value}`);
-    onInputChange(name, value);
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      {Object.entries(labels).map(([iterator, typeInout]) => (
-        <div key={iterator} className="form">
-          <label htmlFor={iterator}>{iterator}</label>
-          <input
-            type={typeInout}
-            onChange={handleChange}
-            name={iterator}
-            id={iterator}
-            value={formState[iterator]}
-            disabled={!edit}
-          />
-        </div>
-      ))}
-    </form>
-  );
-}
-
-function Buttons({ handleSubmit, changeEdit }) {
-  return (
-    <div className="buttons">
-      <button
-        type="submit"
-        style={{ backgroundColor: "rgb(0,256,0,0.5)" }}
-        onClick={handleSubmit}
-      >
-        Submit
-      </button>
-
-      <button
-        onClick={changeEdit}
-        style={{ backgroundColor: "rgb(256,256,0,0.5)" }}
-      >
-        Edit
-      </button>
-    </div>
-  );
-}
-
-function Display({ thing }) {
-  return <h1>{thing}</h1>;
-}
-
-function Education({ educationFormstate, onInputChange }) {
-  const [edit, setEdit] = useState(true);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEdit(false);
-  };
-
-  const changeEdit = () => {
-    setEdit(true);
-  };
-
-  return (
-    <div className="container">
-      <Form
-        labels={educationFormstate}
-        onInputChange={onInputChange}
-        handleSubmit={handleSubmit}
-        edit={edit}
-        formState={educationFormstate}
-      />
-      <Buttons handleSubmit={handleSubmit} changeEdit={changeEdit} />
-      
-    </div>
-  );
-}
-
-function General({ generalformState, onInputChange }) {
-  const [edit, setEdit] = useState(true);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEdit(false);
-  };
-
-  const changeEdit = () => {
-    setEdit(true);
-  };
-
-  return (
-    <div className="container">
-      <Form
-        labels={generalformState}
-        onInputChange={onInputChange}
-        handleSubmit={handleSubmit}
-        formState={generalformState}
-        edit={edit}
-      />
-      <Buttons handleSubmit={handleSubmit} changeEdit={changeEdit} />
-    </div>
-  );
-}
+import GeneralForm from "./Generalform.jsx";
+import EducationForm from "./Educationform.jsx";
+import Experienceform from "./Experienceform.jsx";
+import Layout from "./Layout.jsx";
 
 function App() {
-  const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
-    mail: "",
-    phone: 0,
-  });
-  const [educationFormstate, seteducationFormstate] = useState({
-    university: "",
-    startdate: "",
-    enddate: "",
-    degree: "",
+  const [edit, seEdit] = useState(true);
+  const [general, setgeneral] = useState({
+    fullname: "",
+    email: "",
+    phone: "",
+    location: "",
+
   });
 
-  const onInputGeneralChange = (name, value) => {
-    setFormState((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const onInputeducationChange = (name, value) => {
-    seteducationFormstate((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
+  const [experiences, setexperiences] = useState([
+    {
+      company: "",
+      experience: "",
+      startdate: "",
+      enddate: "",
+      location: "",
+    },
+  ]);
+  const [educations, seteducations] = useState([
+    {
+      university: "",
+      startdate: "",
+      enddate: "",
+      degree: "",
+      location:""
+    },
+  ]);
   return (
-    <div className="mainbody">
-      <div className="left">
-        <General
-          generalformState={formState}
-          onInputChange={onInputGeneralChange}
+    <div className="cvapp">
+      <div>
+        <GeneralForm general={general} setgeneral={setgeneral} />
+        <EducationForm
+          educations={educations}
+          seteducations={seteducations}
+          edit={edit}
+          setEdit={seEdit}
         />
-        <Education
-          educationFormstate={educationFormstate}
-          onInputChange={onInputeducationChange}
+        <Experienceform
+          experiences={experiences}
+          setexperiences={setexperiences}
+          edit={edit}
+          setEdit={seEdit}
         />
-        {/* <button onClick={Education}>Add</button> */}
       </div>
-      <div className="right">
-        {Object.entries(formState).map(([kile, value]) => (
-          <Display key={value} thing={value} />
-        ))}
-        {Object.entries(educationFormstate).map(([kile, value]) => (
-          <Display key={value} thing={value} />
-        ))}
-      </div>
+      <Layout general={general} educations={educations} experiences={experiences}/>
     </div>
   );
 }
-
 export default App;
