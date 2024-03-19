@@ -1,0 +1,18 @@
+*{
+    background-color: black;
+}
+.trans{
+    width: 200px;
+    height: 100px;
+    background-color: #3f9de1;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    margin: 20px;
+    transition: transform 0.7sec ease-in-out ;
+    border: none;
+}
+.trans:hover{
+    transform: scale(1.2);
+}   
