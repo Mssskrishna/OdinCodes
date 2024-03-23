@@ -1,0 +1,24 @@
+
+.cardholder{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 1rem;
+}
+.button{
+    box-shadow: 2px 2px 2px black;
+    border: 2px solid black;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+     align-items:center ;
+     background-color: #ad8585;
+}
+.pokemon{
+    font-size: 30px;
+    /* background-color: #b6bdbb; */
+    color: rgb(91, 208, 18);
+}
+h1,p{
+    text-align: center;
+}
