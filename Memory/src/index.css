@@ -1,24 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text&display=swap');
 
-.cardholder{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-    gap: 1rem;
+body{
+    background-color: black;
+    color: white;
 }
-.button{
-    box-shadow: 2px 2px 2px black;
-    border: 2px solid black;
+.cardholder {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    /* padding: 1rem; */
+}
+
+.button {
+    box-shadow: 2px 2px 5px whitesmoke;
+    border: 2px solid whitesmoke;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-     align-items:center ;
-     background-color: #ad8585;
+    justify-content: center;
+    align-items: center;
+    background-color: #ad8585;
+    /* margin: 10px; */
 }
-.pokemon{
+
+.pokemon {
     font-size: 30px;
     /* background-color: #b6bdbb; */
-    color: rgb(91, 208, 18);
+    color: rgb(185, 231, 45);
 }
-h1,p{
+
+h1,
+p {
     text-align: center;
+    font-family: "Wix Madefor Text", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>; */
+    font-style: normal;
+}
+
+h1 {
+    font-size: 37px;
+    text-decoration: underline;
+}
+@media screen and (max-width: 768px) {
+    .cardholder {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column width for smaller screens */
+        padding: 0.5rem; /* Reduce padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
 }

@@ -81,7 +81,7 @@ function App() {
     <>
       <div className="header">
         <h1>Memory Game</h1>
-        <p>Click the images (don{"'"}t click same image twice)</p>
+        <p><span style={{"color":"red"}}>Note:</span> Click the images (don{"'"}t click same image twice)</p>
         <p>bestScore: {best}</p>
         <p>Score: {count}</p>
       </div>
