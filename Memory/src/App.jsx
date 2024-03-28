@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 function Photo({ onClick, imageurl, imagename }) {
   return (
@@ -17,17 +18,34 @@ function Photo({ onClick, imageurl, imagename }) {
   );
 }
 
+
+
 function App() {
   const [data, setData] = useState([]);
   const [check, setCheck] = useState([]);
 
   const [count, setCount] = useState(0);
   const [best, setBest] = useState(0);
+
+  const [difficulty, setDifficulty] = useState("easy");
+
   useEffect(() => {
+    let limit = 0;
+    switch (difficulty) {
+      case "easy":
+        limit = 6;
+        break;
+      case "medium":
+        limit = 9;
+        break;
+      case "hard":
+        limit = 12;
+        break;
+    }
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://pokeapi.co/api/v2/pokemon?limit=12&offset=1"
+          `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=1`
         );
         const data = await response.json();
         const fetchedImageurl =
@@ -43,13 +61,16 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, [difficulty]);
 
   const getImageId = (url) => {
     const parts = url.split("/");
     return parts[parts.length - 2];
   };
 
+  const windowreload = () => {
+    window.location.reload();
+  };
   const shuffleArray = () => {
     const shuffled = [...data];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -77,13 +98,34 @@ function App() {
 
     shuffleArray(data);
   };
+
+  const handleDifficultchange = (e) => {
+    setDifficulty(e.target.value);
+  };
+
   return (
     <>
       <div className="header">
-        <h1>Memory Game</h1>
-        <p><span style={{"color":"red"}}>Note:</span> Click the images (don{"'"}t click same image twice)</p>
-        <p>bestScore: {best}</p>
-        <p>Score: {count}</p>
+        <h1 onClick={windowreload}>Memory Game</h1>
+        <p>
+          <span style={{ color: "red" }}>Note:</span> Click the images (don{"'"}
+          t click same image twice)
+        </p>
+        <div className="middle">
+          <p>bestScore: {best}</p>
+          <p>Score: {count}</p>
+
+          <select
+            name="difficulty"
+            id="difficulty"
+            value={difficulty}
+            onChange={handleDifficultchange}
+          >
+            <option value="easy">easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>
+          </select>
+        </div>
       </div>
       <div className="cardholder">
         {/* Render the Pokemon images */}
@@ -100,4 +142,9 @@ function App() {
   );
 }
 
+Photo.propTypes = {
+  imagename : PropTypes.string,
+  onClick : PropTypes.func,
+  imageurl : PropTypes.string
+}
 export default App;
