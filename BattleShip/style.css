@@ -97,11 +97,11 @@ button {
 }
 
 .boom {
-    background-color: red;
+    background-color: red !important;
 }
 
 .empty {
-    background-color: grey;
+    background-color: grey !important;
 }
 
 .container {
@@ -111,7 +111,13 @@ button {
     justify-content: center;
     align-items: center;
 }
-
+#computer .submarine,
+#computer .battleship,
+#computer .carrier,
+#computer .cruiser,
+#computer .destroyer{
+    background-color: pink;
+}
 @media (min-width: 768px) {
     #gamesboard-container {
         flex-direction: row;
