@@ -4,8 +4,13 @@ const start_button = document.querySelector("#start-button")
 const infoDisplay = document.querySelector("#info")
 const turnDislay = document.querySelector("#turn")
 const random_button = document.querySelector("#random-button")
-let angle = 0;
+const audio = document.querySelector('audio')
 
+let angle = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    audio.src = "./public/sounds/music.mp3"
+    audio.play()
+})
 document.addEventListener("keypress", (e) => {
     if (e.key == 'r') {
         rotateShips()
@@ -183,6 +188,7 @@ function dropShip(e) {
     if (!notDropped) {
         draggedShip.remove();
     }
+
 }
 
 
@@ -194,12 +200,13 @@ let computerHits = []
 let playerSunkShips = []
 let computerSunkShips = []
 start_button.addEventListener("click", startGame);
+
 function startGame(e) {
     if (option_container.children.length !== 0) {
         infoDisplay.textContent = "Please place all your pieces";
 
-
     } else {
+        random_button.disabled = true
 
         turnDislay.textContent = "Player Turn"
         infoDisplay.textContent = "Let's Start the Game...";
@@ -211,43 +218,62 @@ function startGame(e) {
 
 function handleClick(e) {
     if (!gameOver && playerTurn) {
-        if (e.target.classList.contains('taken')) {
+        audio.src = "./public/sounds/fire_shot.mp3"
+        audio.play()
+        setTimeout(() => {
+            if (e.target.classList.contains('taken')) {
 
-            e.target.classList.add("boom")
-            infoDisplay.textContent = "You hit the computer ship"
-            let classes = Array.from(e.target.classList)
-            classes = classes.filter(className => className !== "block")
+                e.target.classList.add("boom")
+                infoDisplay.textContent = "You hit the computer ship"
+                audio.src = "./public/sounds/shot_hit.mp3"
+                audio.play()
 
-            classes = classes.filter(className => className !== "taken")
-            classes = classes.filter(className => className !== "boom")
-            // console.log(classes)
-            playerHits.push(...classes)
+                let classes = Array.from(e.target.classList)
+                classes = classes.filter(className => className !== "block")
 
-            checkScore('player', playerHits, playerSunkShips)
-            console.log(playerSunkShips)
-        } else {
-            infoDisplay.textContent = "Nothing hit this time"
-            e.target.classList.add('empty')
-        }
-        playerTurn = false
-        setTimeout(computerGo, 3000)
+                classes = classes.filter(className => className !== "taken")
+                classes = classes.filter(className => className !== "boom")
+                // console.log(classes)
+                playerHits.push(...classes)
+
+                checkScore('player', playerHits, playerSunkShips)
+                console.log(playerSunkShips)
+            } else {
+                infoDisplay.textContent = "Nothing hit this time"
+                e.target.classList.add('empty')
+                audio.src = "./public/sounds/shot_miss.mp3"
+                audio.play()
+
+            }
+            playerTurn = false
+            setTimeout(computerGo, 3000)
+
+        }, 2000)
 
     }
 }
+let previous = -1;
 function computerGo() {
     if (!gameOver) {
         turnDislay.textContent = "computer Go!"
         infoDisplay.textContent = "computer is placing its moves"
-
+        audio.src = "./public/sounds/fire_shot.mp3"
+        audio.play()
         setTimeout(() => {
             let rndGo = Math.floor(Math.random() * width * width);
+
             const allBoardBlocks = document.querySelectorAll("#player div")
+           
             if (allBoardBlocks[rndGo].classList.contains('taken') && allBoardBlocks[rndGo].classList.contains('boom')) {
                 computerGo()
                 return
             } else if (allBoardBlocks[rndGo].classList.contains('taken') && !allBoardBlocks[rndGo].classList.contains('boom')) {
+                previous = rndGo;
                 allBoardBlocks[rndGo].classList.add('boom');
                 infoDisplay.textContent = 'Computer hit your ship!!';
+                audio.src = "./public/sounds/shot_hit.mp3"
+                audio.play()
+
                 let classes = Array.from(allBoardBlocks[rndGo].classList);
                 classes = classes.filter(className => className !== "block")
 
@@ -261,15 +287,18 @@ function computerGo() {
 
             } else {
                 allBoardBlocks[rndGo].classList.add('empty');
+                audio.src = "./public/sounds/shot_miss.mp3"
+                audio.play()
+
                 infoDisplay.textContent = "Nothing hits this time"
             }
             setTimeout(() => {
                 playerTurn = true
                 turnDislay.textContent = "Player's turn"
                 infoDisplay.textContent = "Player needs to place"
-            }, 600)
+            }, 1500)
 
-        }, 300)
+        }, 1000)
     }
 }
 
@@ -277,6 +306,14 @@ function checkScore(user, userHits, userSunkShips) {
     function checkShip(shipName, shipLength) {
         if (userHits.filter(storeShip => storeShip === shipName).length === shipLength) {
             infoDisplay.textContent = `you sunk the computer ${shipName}`
+            const allBoardBlocks = document.querySelectorAll("#computer div")
+            allBoardBlocks.forEach(block => {
+                if (block.classList.contains(shipName)) {
+                    block.textContent = '-----'
+                    block.style.display = 'flex'
+                    block.style.alignItems = 'center'
+                }
+            })
             if (user === 'player') {
                 playerHits = userHits.filter(storeShip => storeShip !== shipName)
 
@@ -308,4 +345,4 @@ setTimeout(() => {
     if (gameOver) {
         window.reload()
     }
-},2000)
+}, 2000)
