@@ -6,8 +6,8 @@ function Photo({ onClick, imageurl, imagename }) {
     <div className="button">
       <img
         src={imageurl}
-        width={200}
-        height={200}
+        width={100}
+        height={100}
         onClick={() => onClick(imagename)}
         alt={imagename}
         className="card"
@@ -18,16 +18,13 @@ function Photo({ onClick, imageurl, imagename }) {
   );
 }
 
-
-
 function App() {
   const [data, setData] = useState([]);
   const [check, setCheck] = useState([]);
-
   const [count, setCount] = useState(0);
   const [best, setBest] = useState(0);
-
   const [difficulty, setDifficulty] = useState("easy");
+  const [winner, setWinner] = useState("");
 
   useEffect(() => {
     let limit = 0;
@@ -70,7 +67,9 @@ function App() {
 
   const windowreload = () => {
     window.location.reload();
+    setWinner(null);
   };
+
   const shuffleArray = () => {
     const shuffled = [...data];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -80,20 +79,44 @@ function App() {
     setData(shuffled);
   };
 
+  const reset = (winner, count) => {
+    setWinner(winner);
+    if (count > best) {
+      setBest(count);
+    }
+    setCheck([]);
+    setCount(0);
+  };
+
+  const checkwin = (difficulty, count) => {
+    switch (difficulty) {
+      case "easy":
+        if (count === 6) reset("you win", count);
+        break;
+      case "medium":
+        if (count === 9) reset("you win", count);
+        break;
+      case "hard":
+        if (count === 12) reset("you win", count);
+        break;
+      default:
+        console.log("keep going");
+    }
+  };
+
   const buttonClick = (name) => {
-    // const lebull = check.filter((tocheck) => tocheck === name).length > 0;
+    setWinner(null);
+
     const lebull = check.includes(name);
     if (lebull) {
-      console.log("You lose");
-      setBest(Math.max(best, count));
-      setCheck([]);
-      setCount(0);
+      reset("you lose");
     } else {
-      // check.push(name);
       setCheck((prevData) => [...prevData, name]);
-      console.log("keep going");
-      console.log(check);
-      setCount(count + 1);
+      setCount((prevCount) => {
+        const newCount = prevCount + 1;
+        checkwin(difficulty, newCount);
+        return newCount;
+      });
     }
 
     shuffleArray(data);
@@ -114,7 +137,6 @@ function App() {
         <div className="middle">
           <p>bestScore: {best}</p>
           <p>Score: {count}</p>
-
           <select
             name="difficulty"
             id="difficulty"
@@ -127,8 +149,14 @@ function App() {
           </select>
         </div>
       </div>
+      <div className="winner">
+        {winner !== null && (
+          <p style={{ color: winner === "you win" ? "green" : "red" }}>
+            {winner}
+          </p>
+        )}
+      </div>
       <div className="cardholder">
-        {/* Render the Pokemon images */}
         {data.map((value, index) => (
           <Photo
             key={index}
@@ -143,8 +171,9 @@ function App() {
 }
 
 Photo.propTypes = {
-  imagename : PropTypes.string,
-  onClick : PropTypes.func,
-  imageurl : PropTypes.string
-}
+  imagename: PropTypes.string,
+  onClick: PropTypes.func,
+  imageurl: PropTypes.string,
+};
+
 export default App;

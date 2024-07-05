@@ -93,3 +93,6 @@ select {
     background-color: black;
     color: white;
 }
+.winner{
+    font-size: 25px;
+}
