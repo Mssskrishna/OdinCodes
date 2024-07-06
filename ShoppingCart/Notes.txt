@@ -1,0 +1,37 @@
+Control Flow
+    Initialize Project
+
+Create a new React project with Create React App.
+    Set up your folder structure and initial files.
+    
+Basic Navigation Setup
+    Implement NavBar.
+    Set up React Router for navigation.
+
+HomePage
+    Implement the HomePage component and add basic content.
+
+ShopPage
+    Implement the ShopPage component.
+    Fetch products from the FakeStore API.
+    Create and display ProductCard components.
+
+ProductCard Functionality
+    Implement input field, increment, decrement, and “Add To Cart” button in ProductCard.
+    Implement functionality to adjust item quantity in the cart.
+ 
+//?TODO:
+
+Shopping Cart State Management
+    Set up state management for the cart.
+    Implement logic to add items to the cart and update the cart count in the NavBar.
+
+Cart Component
+    Implement Cart component to display current items in the cart.
+    Add checkout button to the NavBar.
+
+Styling
+    Style the application.
+
+Testing
+    Write tests for the components and overall functionality using React Testing Library.
