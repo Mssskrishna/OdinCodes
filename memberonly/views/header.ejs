@@ -1,0 +1,22 @@
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="brand">
+                <a href="/">MemberOnly </a>
+            </div>
+            <div class="nav-links">
+                <% if (user) { %>
+                    <a href="/">Home</a>
+                    <a href="/messages/create">Create a new message</a>
+                    <% if (!user.membership) { %>
+                        <a href="/join-club">Join Club</a>
+                    <% } %>
+                    <a href="/logout">Logout</a>
+                <% } else { %>
+                    <a href="/login">Login</a>
+                    <a href="/sign-up">Sign Up</a>
+                <% } %>
+            </div>
+        </div>
+    </nav>
+</header>

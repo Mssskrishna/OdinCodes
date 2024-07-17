@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+    <div class="form" >
+        <h2 style="margin-bottom: 10px">Sign Up Form </h2>
+        <form action="/sign-up" method="post" class="login-form">
+            <div class="form-group">
+                <label for="firstname">Firstname:</label>
+                <input type="text" id="firstname" name="firstname" value="<%= formData.firstname %>" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Lastname:</label>
+                <input type="text" id="lastname" name="lastname" value="<%= formData.lastname %>" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" value="<%= formData.email %>" required>
+                <% if (errors.length> 0) { %>
+                    <% errors.forEach(function(error) { %>
+                        <% if (error.path==='email' ) { %>
+                            <div class="error-message">
+                                <%= error.msg %>
+                            </div>
+                            <% } %>
+                                <% }); %>
+                                    <% } %>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" value="<%= formData.password %>" required>
+                <% if (errors.length> 0) { %>
+                    <% errors.forEach(function(error) { %>
+                        <% if (error.path==='password' ) { %>
+                            <div class="error-message">
+                                <%= error.msg %>
+                            </div>
+                            <% } %>
+                                <% }); %>
+                                    <% } %>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

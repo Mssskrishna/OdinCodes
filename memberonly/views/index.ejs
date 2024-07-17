@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MemberOnly</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+  <%- include('header') %>
+  <div class="container">
+    <h1 style="padding: 10px;">Messages</h1>
+    <ul class="message-list">
+      <% messages.forEach(message => { %>
+        <li class="message">
+          <h2 class="message-title"><%= message.title %></h2>
+          <p class="message-text"><%= message.text %></p>
+          <% if (user && user.membership) { %>
+            <p class="message-author">By: <%= message.author.firstname %> <%= message.author.lastname %></p>
+            <p class="message-timestamp">On: <%= new Date(message.timeStamp).toLocaleString() %></p>
+          <% } %>
+          <% if(user && user.isAdmin){ %>
+            <form action="/messages/delete" method="post">
+              <input type="hidden" name="messageId" value="<%= message._id %>">
+              <input type="submit" value="Delete" class="delete-button">
+            </form>
+          <% } %>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Your Club. All rights reserved.</p>
+  </footer>
+</body>
+</html>

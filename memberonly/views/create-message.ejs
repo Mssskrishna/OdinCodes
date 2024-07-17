@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Message</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h2 style="margin-bottom: 20px; text-align: center;">Create a New Message</h2>
+        <form action="/messages/create" method="post" class="form-container">
+            <div class="form-field">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required class="form-input">
+            </div>
+            <div class="form-field">
+                <label for="text">Message:</label>
+                <textarea id="text" name="text" required class="form-textarea"></textarea>
+            </div>
+            <button type="submit" class="form-button">Create Message</button>
+        </form>
+    </div>
+</body>
+
+</html>
