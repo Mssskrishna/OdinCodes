@@ -125,6 +125,7 @@ const handleUserInput = () => {
             button.textContent = '';
             button.disabled = false;
         });
+        manipulate.updatehead('playerone');
         manipulate.displayWinner('');
         manipulate.blockAll(false);
     });
