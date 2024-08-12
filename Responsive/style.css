@@ -27,8 +27,8 @@ body {
 }
 
 .content {
-    padding: 30px;
-    margin: 30px 20px 20px 0px;
+    padding: 2rem;
+    margin: 1rem 0px;
     background-color: white;
 }
 
@@ -38,13 +38,12 @@ body {
     justify-content: flex-end;
     gap: 10px;
 }
-
 .work {
     display: grid;
     grid-template-columns: repeat(3, 400px);
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 1rem;
 }
 
 .workphoto {
@@ -72,11 +71,11 @@ h2 {
 }
 
 p {
-    font-size: 19px;
+    font-size: 1.2rem;
 }
 
 h1 {
-    padding: 10px;
+    padding: 1rem;
 }
 
 .contact {
@@ -87,7 +86,7 @@ h1 {
 .hell {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
 }
 
 .footer {
@@ -111,8 +110,8 @@ h1 {
     }
 
     .content {
-        padding: 10px;
-        margin: 10px;
+        padding: 1rem;
+        margin: 1rem;
     }
 
     .work {
