@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    Inventory Application
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>
+    Inventory Application
+  </h1>
+  <p>Welcome to App
+  </p>
+  <% if (categories.length> 0) { %>
+    <ul>
+      <% categories.forEach(category=> { %>
+        <li>
+          <%= category.category %>
+        </li>
+        <% }) %>
+          <% } %>
+    </ul>
+</body>
+
+</html>
