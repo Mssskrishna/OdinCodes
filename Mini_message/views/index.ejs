@@ -17,21 +17,20 @@
   <p>Messages:</p>
   <ul>
     <% for (let index=0; index < messages.length; index++) { %>
-      <dd style="border-bottom: 2px solid red; width: 100px;">
-        <%= messages[index].user %>
+      <dd style="border-bottom: 2px solid red; width: 100px; font-weight: bold;">
+        <%= messages[index].username %>
 
       </dd>
       <dl>
         <%= messages[index].text %>
       </dl>
       <dl>
-        <%= messages[index].added.getDate()  %>
-        <%= messages[index].added.getMonth()  %>
-        <%= messages[index].added.getFullYear()  %>
-        
+        <%= messages[index].added.getDate() %>-<%= messages[index].added.getMonth() %>-<%= messages[index].added.getFullYear() %>
+
       </dl>
       <% } %>
   </ul>
+
   <a href="http://localhost:3001/new">New Message</a>
 </body>
 
