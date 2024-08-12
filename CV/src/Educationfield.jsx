@@ -49,4 +49,5 @@ function Educationfield({ general, handleChange, edit ,onDelete}) {
     </>
   );
 }
+
 export default Educationfield;

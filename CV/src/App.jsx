@@ -34,6 +34,7 @@ function App() {
   ]);
   return (
     <div className="cvapp">
+      {/* <h1>CV Generator</h1> */}
       <div>
         <GeneralForm general={general} setgeneral={setgeneral} />
         <EducationForm
