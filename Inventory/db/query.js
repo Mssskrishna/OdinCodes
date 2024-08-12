@@ -31,8 +31,6 @@ async function getAllCategories() {
         console.error("Error fetching categories", error);
     }
 }
-// getAllCategories();
-// getAllFirearms()
 module.exports = {
     getAllFirearms,
     getAllCategories
