@@ -1,7 +1,9 @@
 // import React from "react";
 import { Link } from "react-router-dom";
 import cart from "../assets/shopping-cart.png";
+// import { useState } from "react";
 function NavBar() {
+  
   return (
     <div
       style={{

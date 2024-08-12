@@ -32,6 +32,7 @@ function App() {
               description={product.description}
               category={product.category}
               image={product.image}
+              price = {product.price}
             />
           ))
         ) : (
