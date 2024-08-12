@@ -83,7 +83,7 @@
     background-color: #38bdf8;
     padding: 15px;
     border-radius: 25px;
-    width: 7vw;
+    width: max(7vw,100px);
     color: #FFF;
     font-size: 20px;
     /* gap: 15px; */
