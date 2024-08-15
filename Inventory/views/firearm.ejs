@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 5px;">
+    <button style="background-color: antiquewhite;border-radius: 10px;padding:5px;">
+      <a href="/newFirearm" style="color: blue;text-decoration: none;">New Firearm</a>
+    </button>
+  </div>
+  <h2 style="text-decoration: underline;">Firearms</h2>
+  <div id="firearm-list" style="display: flex; flex-wrap: wrap; gap:15px;">
+    <% result.forEach(firearm=> { %>
+      <div style="width: 300px;">
+        <h2>
+          <%= firearm.name %>
+        </h2>
+        <img src="<%= firearm.image_link %>" alt="<%= firearm.name %>" width="100px" height="100px">
+        <p><b>Category: </b>
+          <%= firearm.category %>
+        </p>
+        <p><b>Caliber: </b>
+          <%= firearm.caliber %>
+        </p>
+        <p><b>Description: </b>
+          <%= firearm.description %>
+        </p>
+        <p><b>Weight: </b>
+          <%= firearm.weight %>
+        </p>
+        <p><b>Length: </b>
+          <%= firearm.length %>
+        </p>
+      </div>
+      <% }) %>
+  </div>
+  <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 5px;">
+    <button id="load-more-btn" style="background-color: antiquewhite;border-radius: 10px;padding:5px;">
+      <!-- <a href="/l"></a>
+       load_more -->
+      <!-- <a href="/firearms/?limit=20&?offset=10">load_more</a> -->
+       load_more
+    </button>
+  </div>
+  <script src="/javascripts/app.js">
+    </script>
+</body>
+
+</html>
