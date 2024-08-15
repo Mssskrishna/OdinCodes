@@ -1,16 +1,22 @@
-const db = require('../db/query');
+const db = require('../db/query')
 
-// async function getAllFirearms(res, req, next) {
-//     const 
-// }
-
-async function getAllCategories(req, res, next) {
-    const result = await db.getAllCategories();
-    console.log(result);
-    res.render("index", { categories: result });
+async function getFirearms(req,res,next){
+    const limit = parseInt(req.query.limit) || 12;
+    const offset = parseInt(req.query.offset) || 0;
+    // console.log(limit,offset)
+    const { rows } = await db.getAllFirearms(null,limit,offset)
+    // console.log(rows)
+    res.render('firearm',{result:rows})
 }
-// getAllCategories()
-
+// getFirearms()
+async function getFirearmsLmit(req,res,next){
+    const limit = parseInt(req.query.limit) || 12;
+    const offset = parseInt(req.query.offset) || 0;
+    // console.log(limit,offset)
+    const { rows } = await db.getAllFirearms(null,limit,offset)
+    return res.json(rows)
+}
 module.exports = {
-    getAllCategories
+    getFirearms,
+    getFirearmsLmit
 }
