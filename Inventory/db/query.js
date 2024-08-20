@@ -1,13 +1,7 @@
-// const {Client} = require("pg");
-
-// const SQL = 
-// "CREATE TABLE IF NOT EXISTS "
 
 const pool = require('./pool');
 
-
-
-async function getAllFirearms(category = null,limit,offset) {
+async function getAllFirearms(category = null, limit, offset) {
     try {
         const query = category
             ? 'SELECT * FROM firearms WHERE category = $1 LIMIT $2 OFFSET $3;'
@@ -26,7 +20,7 @@ async function getAllFirearms(category = null,limit,offset) {
 // getAllFirearms()
 async function getAllCategories() {
     try {
-        const query = 'SELECT DISTINCT category FROM firearms';
+        const query = 'SELECT DISTINCT category FROM firearms ORDER BY category ASC';
         const { rows } = await pool.query(query);
         // console.log(rows);
         return rows;
@@ -35,8 +29,37 @@ async function getAllCategories() {
     }
 }
 
+async function updateCategory(prevCategory, newCategory) {
+    try {
+       if(prevCategory.length < 1 || newCategory.length < 1){
+            throw Error("must contain letters");
+        }
+        const query = "UPDATE firearms SET category = $1 WHERE category = $2";
+        const result = await pool.query(query, [newCategory,prevCategory]);
+        
+        return result.rowCount > 0;
+        
+    } catch (error) {
+        console.error("Error updating category:", error.message);
+    }
+}
+
+
+async function deleteCategory(category){
+    try {
+        const query = 'UPDATE firearms SET category = null WHERE category = $1';
+        const result = await pool.query(query, [category]);
+
+        console.log(result.rowCount > 0);
+    } catch (error) {
+        
+    }
+}
+
+// deleteCategory("AirRifle");
 
 module.exports = {
     getAllFirearms,
-    getAllCategories
+    getAllCategories,
+    updateCategory
 }

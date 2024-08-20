@@ -6,6 +6,7 @@ const client = new Client({
 });
 
 // Example JSON data
+// took a big risk by placing the json file full details in one page
 const data = {
     "QCW-05": {
         "Type:": "Submachine Gun",
