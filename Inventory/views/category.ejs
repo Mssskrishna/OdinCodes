@@ -6,18 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>Categories</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            border: 2px solid grey;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li:hover{
+            background-color: beige;
+        }
+        button:hover{
+            background-color: rgb(228, 201, 168);
+        }
+    </style>
 </head>
 
-<body>
+<body style="margin: 0;padding: 0">
     <div>
-        <ul>
+        <h2 style="text-align: center;text-decoration: underline;">Categories</h2>
+        <ul style="display: grid;grid-template-columns:280px 280px 280px 280px 280px; gap:10px;">
             <% categories.forEach(category=> { %>
-                <li>
-                    <a href="/?category=<%=category.category%>"">
-                  <%= category.category %>
-                </a>
-              </li>
-              <% }) %>
+                <% if (category.category !=null || category.category !=undefined) { %>
+                    <li>
+                        <p>
+                            <b>
+                                <%= category.category %>
+                            </b>
+                        </p>
+                        <div style="display:flex;gap: 20px;">
+                            <button><a href="/firearms?category=<%=category.category%>""> View</a></button>
+                        <button> <a href=" /category/update?category=<%=category.category%>"">Update</a></button>
+                            <button><a href="/category/delete">Delete</a></button>
+                        </div>
+
+
+                    </li>
+                    <% } %>
+                        <% }) %>
         </ul>
     </div>
 </body>

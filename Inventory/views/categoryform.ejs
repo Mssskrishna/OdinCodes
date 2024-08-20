@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Category</title>
+    <style>
+        form {
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        div {
+            border: 2px solid greenyellow;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <% if (errors.length> 0) { %>
+        <% errors.forEach(error=> { %>
+
+            <p style="color: red;">error</p>
+            <% }) %>
+    <% } %>
+    <form action="/category/update" method="post">
+        <div>
+            <h2 style="padding-top: -10px;">Update Category</h2>
+            <label for="previous_value">Previous: <b>
+                    <%= category %>
+                </b></label>
+            <br>
+            <label for="new_value">New Value: </label>
+            <input type="text" name="previouscat" value="<%= category %>"  hidden>
+            
+            <input type="text" name="new_category" id="new_category">
+            <br>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+</body>
+
+</html>

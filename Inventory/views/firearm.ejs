@@ -17,12 +17,12 @@
   <h2 style="text-decoration: underline;">Firearms</h2>
   <div id="firearm-list" style="display: flex; flex-wrap: wrap; gap:15px;">
     <% result.forEach(firearm=> { %>
-      <div style="width: 300px;">
+      <div style="width: 300px ">
         <h2>
           <%= firearm.name %>
         </h2>
         <img src="<%= firearm.image_link %>" alt="<%= firearm.name %>" width="100px" height="100px">
-        <p><b>Category: </b>
+        <p class="category"><b>Category: </b>
           <%= firearm.category %>
         </p>
         <p><b>Caliber: </b>
@@ -40,11 +40,8 @@
       </div>
       <% }) %>
   </div>
-  <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 5px;">
+  <div style="display: flex;justify-content: center;align-items: center;margin-top: 20px;">
     <button id="load-more-btn" style="background-color: antiquewhite;border-radius: 10px;padding:5px;">
-      <!-- <a href="/l"></a>
-       load_more -->
-      <!-- <a href="/firearms/?limit=20&?offset=10">load_more</a> -->
        load_more
     </button>
   </div>
