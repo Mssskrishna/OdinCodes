@@ -5,9 +5,11 @@ const limit = 12; // Number of items to fetch per request
 // loadMore()
 async function loadMore() {
   try {
-    console.log('Sending request to:', `/firearm?limit=${limit}&offset=${offset}`);
+    const category = document.querySelector('.category').textContent.split('\n')[1].trim()
+    console.log(category)
+    console.log('Sending request to:', `/firearms/firearm?category=${category}&limit=${limit}&offset=${offset}`);
     
-    const response = await fetch(`/firearm?limit=${limit}&offset=${offset}`, {
+    const response = await fetch(`/firearms/firearm?category=${category}&limit=${limit}&offset=${offset}`, {
       method: 'GET',
     });
     console.log(response)
