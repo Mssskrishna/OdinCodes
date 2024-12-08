@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="blog-id" content="<%= blog.id %>" />
+    <title>Document</title>
+    <style>
+      .created {
+        color: grey;
+      }
+      button:hover {
+        scale: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div>header</div>
+    <div>
+      <h1><%= blog.title %></h1>
+      <p class="created"><%= blog.createdAt %></p>
+    </div>
+    <div>
+      <h1>Introduction:</h1>
+      <p><%= blog.introduction %></p>
+    </div>
+    <div>
+      <% blog.body.forEach(subbody => { %>
+      <p><%= subbody %></p>
+      <% }) %>
+    </div>
+    <div>
+      <p><%= blog.conclusion %></p>
+    </div>
+    <div>
+      <h4>Likes: <span class="likeValue"><%= blog.likes %></span></h4>
+      <button style="border: none; background: none">❤️</button>
+      <input type="hidden" value="<%= blog.isLiked %>" />
+    </div>
+
+    <script>
+      const likeButton = document.querySelector("button");
+      const likeValue = document.querySelector(".likeValue");
+      const isLiked = document.querySelector('input').value;
+      console.log(isLiked)
+      const blogId = document
+        .querySelector('meta[name="blog-id"]')
+        .getAttribute("content");
+
+      likeButton.addEventListener("click", async () => {
+        try {
+          const response = await fetch("/likeincrease", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ blogId: blogId,isLiked:isLiked  }),
+          });
+
+          const data = await response.json();
+
+          if (data.likes) {
+            // Update the likes count in the DOM
+            likeValue.textContent = data.likes;
+            isLiked.value = data.isLiked;
+          }
+        } catch (error) {
+          console.error("Error increasing likes:", error);
+        }
+      });
+    </script>
+  </body>
+</html>

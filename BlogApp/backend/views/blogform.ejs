@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog</title>
+    <link rel='stylesheet' href='/stylesheets/blog.css' />
+</head>
+
+<body>
+    <h2 style="text-align: center;">Create Blog</h2>
+    <div class="formcontainer">
+        <form action="/newblog" method="post">
+            <!-- Display error message, if any -->
+            <% if (error) { %>
+                <p style="color: red;"><%= error %></p>
+            <% } %>
+
+            <div>
+                <label for="title">Title:</label>
+                <!-- Use the title value if it exists, otherwise leave the input empty -->
+                <input type="text" name="title" id="title" value="<%= title ? title : '' %>" required>
+            </div>
+
+            <div>
+                <label for="introduction">Introduction:</label>
+                <!-- Use the introduction value if it exists, otherwise leave the textarea empty -->
+                <textarea name="introduction" id="introduction" cols="45" rows="3"><%= introduction ? introduction : '' %></textarea>
+            </div>
+
+            <div class="maincontent">
+                <label for="body">Main Content:</label>
+                <!-- Handle multiple body sections -->
+                <textarea name="body" id="body-1" cols="70" rows="5"><%= body && body[0] ? body[0] : '' %></textarea>
+                <hr>
+                <textarea name="body" id="body-2" cols="70" rows="5"><%= body && body[1] ? body[1] : '' %></textarea>
+                <hr>
+                
+                <button type="button" id="add-paragraph">Add Another Paragraph</button>
+            </div>
+
+            <div>
+                <label for="conclusion">Conclusion:</label>
+                <!-- Use the conclusion value if it exists, otherwise leave the textarea empty -->
+                <textarea name="conclusion" id="conclusion" cols="45" rows="3"><%= conclusion ? conclusion : '' %></textarea>
+            </div>
+
+            <div>
+                <input type="submit" title="submit" style="margin-top: 10px;">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const addParagraphButton = document.getElementById('add-paragraph');
+        let bodyCount = 2;
+
+        addParagraphButton.addEventListener('click', () => {
+            bodyCount++;
+            const textarea = document.createElement('textarea');
+            textarea.name = `body`;
+            textarea.cols = 70;
+            textarea.rows = 5;
+            textarea.id = `body-${bodyCount}`;
+            document.querySelector('.maincontent').insertBefore(textarea, addParagraphButton);
+        });
+    </script>
+
+</body>
+
+</html>
